@@ -8,10 +8,12 @@
 // }
 
 // ----------2------------------
-export  default function ButtonComponent({name}: {name : string}) {
+import {ReactNode} from "react";
+
+export  default function ButtonComponent(props: {children : ReactNode}) {
     return (
         <>
-            <button>{name}</button>
+            <button>{props.children}</button>
         </>
     )
 }
