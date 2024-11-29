@@ -1,5 +1,6 @@
 import './App.css'
 import ButtonComponent from "./assets/components/ButtonComponent.tsx";
+import {useState} from "react";
 // import Subject from "./assets/components/Subject.tsx";
 // import {Item} from "./assets/components/Item.tsx";
 // import {itemList} from "./items.ts";
@@ -41,9 +42,33 @@ function App() {
     //     content = <Login/>;
     // }
 
-    const handleClick = (name: string) => {
-        alert(name + "clicked!")
+    const [content,setContent] = useState('default');
+
+    const handleClick = (name : string) => {
+        let desc;
+        subjects.map((subject)=>{
+            if(subject.sName === name) {
+                desc = subject.sDesc;
+            }
+        })
+        setContent(name);
+        alert(desc)
     }
+
+    const subjects=[
+        {
+            sName : "RAD",
+            sDesc : "Lorem Ipsum RAD",
+        },
+        {
+            sName : "JS",
+            sDesc : "Lorem Ipsum JS",
+        },
+        {
+            sName : "CSS",
+            sDesc : "Lorem Ipsum CSS",
+        }
+    ]
 
     return (
       <>
@@ -66,13 +91,19 @@ function App() {
           {/*    Lorem Ipsum is simply dummy text of the printing.*/}
           {/*</Subject>*/}
 
-          <ButtonComponent onselect = {handleClick}>Dashboard</ButtonComponent>
-          <ButtonComponent onselect= {handleClick}>Add Customer</ButtonComponent>
-          <ButtonComponent onselect= {handleClick}>Delete Customer</ButtonComponent>
+          {/*<ButtonComponent onselect = {handleClick}>Dashboard</ButtonComponent>*/}
+          {/*<ButtonComponent onselect= {handleClick}>Add Customer</ButtonComponent>*/}
+          {/*<ButtonComponent onselect= {handleClick}>Delete Customer</ButtonComponent>*/}
+
+          <ButtonComponent onselect = {handleClick}>{subjects[0].sName}</ButtonComponent>
+          <ButtonComponent onselect = {handleClick}>{subjects[1].sName}</ButtonComponent>
+          <ButtonComponent onselect = {handleClick}>{subjects[2].sName}</ButtonComponent>
+
+          <br/>
+              {content}
 
 
       </>
-
   )
 }
 
