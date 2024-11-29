@@ -1,19 +1,18 @@
-export  default function ButtonComponent() {
+// ----------1------------------
+// export  default function ButtonComponent(props: {name : string}) {
+//     return (
+//         <>
+//             <button>{props.name}</button>
+//         </>
+//     )
+// }
+
+// ----------2------------------
+export  default function ButtonComponent({name}: {name : string}) {
     return (
         <>
-            <button>Click Me</button>
-            <button>Click Me</button>
-            <button>Click Me</button>
+            <button>{name}</button>
         </>
     )
 }
 
-export function SmallButtonComponent() {
-    return (
-        <>
-            <button>Click Me1</button>
-            <button>Click Me1</button>
-            <button>Click Me1</button>
-        </>
-    )
-}

@@ -1,12 +1,16 @@
 import './App.css'
-import ButtonComponent, {SmallButtonComponent} from "./assets/components/ButtonComponent.tsx";
+import ButtonComponent from "./assets/components/ButtonComponent.tsx";
 
 function App() {
 
+    // const count = 10;
+
   return (
       <>
-          <ButtonComponent></ButtonComponent>
-          <SmallButtonComponent></SmallButtonComponent>
+          {/*<p>{count}</p>*/}
+          <ButtonComponent name = "Add"></ButtonComponent>
+          <ButtonComponent name = "Update"></ButtonComponent>
+          <ButtonComponent name = "Delete"></ButtonComponent>
 
       </>
   )
