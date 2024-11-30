@@ -1,6 +1,6 @@
 import './App.css'
-import ButtonComponent from "./assets/components/ButtonComponent.tsx";
-import {useState} from "react";
+import {ButtonComponent} from "./assets/components/ButtonComponent.tsx";
+import {  useState} from "react";
 // import Subject from "./assets/components/Subject.tsx";
 // import {Item} from "./assets/components/Item.tsx";
 // import {itemList} from "./items.ts";
@@ -42,69 +42,81 @@ function App() {
     //     content = <Login/>;
     // }
 
-    const [content,setContent] = useState('default');
+    // const [content,setContent] = useState('default');
+    //
+    // const handleClick = (name : string) => {
+    //     let desc;
+    //     subjects.map((subject)=>{
+    //         if(subject.sName === name) {
+    //             desc = subject.sDesc;
+    //         }
+    //     })
+    //     setContent(name);
+    //     alert(desc)
+    // }
 
-    const handleClick = (name : string) => {
-        let desc;
-        subjects.map((subject)=>{
-            if(subject.sName === name) {
-                desc = subject.sDesc;
-            }
-        })
-        setContent(name);
-        alert(desc)
-    }
+    // const subjects=[
+    //     {
+    //         sName : "RAD",
+    //         sDesc : "Lorem Ipsum RAD",
+    //     },
+    //     {
+    //         sName : "JS",
+    //         sDesc : "Lorem Ipsum JS",
+    //     },
+    //     {
+    //         sName : "CSS",
+    //         sDesc : "Lorem Ipsum CSS",
+    //     }
+    // ]
 
-    const subjects=[
-        {
-            sName : "RAD",
-            sDesc : "Lorem Ipsum RAD",
-        },
-        {
-            sName : "JS",
-            sDesc : "Lorem Ipsum JS",
-        },
-        {
-            sName : "CSS",
-            sDesc : "Lorem Ipsum CSS",
-        }
-    ]
+    const [count, setCount] = useState(0);
 
     return (
-      <>
-          {/*<p>{count}</p>*/}
-          {/*<ButtonComponent>Click Me</ButtonComponent>*/}
-          {/*<ButtonComponent>Click Me1</ButtonComponent>*/}
-          {/*<ButtonComponent>Click Me2</ButtonComponent>*/}
-          {/*<Item title={itemList[0].title} description={itemList[0].description}></Item>*/}
-          {/*<Item title={itemList[1].title} description={itemList[1].description}></Item>*/}
-          {/*<Item title={itemList[2].title} description={itemList[2].description}></Item>*/}
+        <>
+            {/*<p>{count}</p>*/}
+            {/*<ButtonComponent>Click Me</ButtonComponent>*/}
+            {/*<ButtonComponent>Click Me1</ButtonComponent>*/}
+            {/*<ButtonComponent>Click Me2</ButtonComponent>*/}
+            {/*<Item title={itemList[0].title} description={itemList[0].description}></Item>*/}
+            {/*<Item title={itemList[1].title} description={itemList[1].description}></Item>*/}
+            {/*<Item title={itemList[2].title} description={itemList[2].description}></Item>*/}
 
-          {/*{content}*/}
-          {/*<Subject name= "RAD">*/}
-          {/*    Lorem Ipsum is simply dummy text of the printing.*/}
-          {/*</Subject>*/}
-          {/*<Subject name= "MAD">*/}
-          {/*    Lorem Ipsum is simply dummy text of the printing.*/}
-          {/*</Subject>*/}
-          {/*<Subject name= "OOP">*/}
-          {/*    Lorem Ipsum is simply dummy text of the printing.*/}
-          {/*</Subject>*/}
+            {/*{content}*/}
+            {/*<Subject name= "RAD">*/}
+            {/*    Lorem Ipsum is simply dummy text of the printing.*/}
+            {/*</Subject>*/}
+            {/*<Subject name= "MAD">*/}
+            {/*    Lorem Ipsum is simply dummy text of the printing.*/}
+            {/*</Subject>*/}
+            {/*<Subject name= "OOP">*/}
+            {/*    Lorem Ipsum is simply dummy text of the printing.*/}
+            {/*</Subject>*/}
 
-          {/*<ButtonComponent onselect = {handleClick}>Dashboard</ButtonComponent>*/}
-          {/*<ButtonComponent onselect= {handleClick}>Add Customer</ButtonComponent>*/}
-          {/*<ButtonComponent onselect= {handleClick}>Delete Customer</ButtonComponent>*/}
+            {/*<ButtonComponent onselect = {handleClick}>Dashboard</ButtonComponent>*/}
+            {/*<ButtonComponent onselect= {handleClick}>Add Customer</ButtonComponent>*/}
+            {/*<ButtonComponent onselect= {handleClick}>Delete Customer</ButtonComponent>*/}
 
-          <ButtonComponent onselect = {handleClick}>{subjects[0].sName}</ButtonComponent>
-          <ButtonComponent onselect = {handleClick}>{subjects[1].sName}</ButtonComponent>
-          <ButtonComponent onselect = {handleClick}>{subjects[2].sName}</ButtonComponent>
-
-          <br/>
-              {content}
+            {/*<ButtonComponent onselect = {handleClick}>{subjects[0].sName}</ButtonComponent>*/}
+            {/*<ButtonComponent onselect = {handleClick}>{subjects[1].sName}</ButtonComponent>*/}
+            {/*<ButtonComponent onselect = {handleClick}>{subjects[2].sName}</ButtonComponent>*/}
 
 
-      </>
-  )
+            {/*<br/>*/}
+            {/*    {content}*/}
+            {/*{count}<br/>*/}
+            {/*<button onClick={() => {setCount(count + 1)}}>Add</button>*/}
+            {/*<button onClick={() => {setCount(count - 1)}}>Sub</button>*/}
+
+            <div className="App">
+                <h1>{count}</h1>
+                <ButtonComponent count={count} myClick={setCount}>Add</ButtonComponent>
+                <ButtonComponent count={count} myClick={setCount}>Subtract</ButtonComponent>
+            </div>
+
+
+        </>
+    )
 }
 
 export default App
