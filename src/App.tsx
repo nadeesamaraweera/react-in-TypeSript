@@ -1,12 +1,29 @@
-import './App.css'
-import {ButtonComponent} from "./assets/components/ButtonComponent.tsx";
-import {  useState} from "react";
+
+// import {ButtonComponent} from "./assets/components/ButtonComponent.tsx";
+// import {Customer} from "./customer.ts";
+// // import {  useState} from "react";
+// import {createBrowserRouter, RouterProvider} from "react-router";
+// import {AddCustomer} from "./pages/AddCustomer.tsx";
+// import {Dashboard} from "./pages/Dashboard.tsx";
+// import {DeleteCustomer} from "./pages/DeleteCustomer.tsx";
+// import {UpdateCustomer} from "./pages/UpdateCustomer.tsx";
+// import {RootLayout} from "./component/RootLayout.tsx";
+// import {CustomerProvider} from "./component/CustomerProvider.tsx";
 // import Subject from "./assets/components/Subject.tsx";
 // import {Item} from "./assets/components/Item.tsx";
 // import {itemList} from "./items.ts";
 // import ButtonComponent from "./assets/components/ButtonComponent.tsx";
 // import {Dashboard} from "./assets/components/Dashboard.tsx";
 // import {Login} from "./assets/components/Login.tsx";
+
+import './App.css'
+import {createBrowserRouter, RouterProvider} from "react-router";
+import {Dashboard} from "./pages/Dashboard.tsx";
+import {AddCustomer} from "./pages/AddCustomer.tsx";
+import {UpdateCustomer} from "./pages/UpdateCustomer.tsx";
+import {DeleteCustomer} from "./pages/DeleteCustomer.tsx";
+import {RootLayout} from "./component/RootLayout.tsx";
+import {CustomerProvider} from "./component/CustomerProvider.tsx";
 
 function App() {
 
@@ -70,7 +87,64 @@ function App() {
     //     }
     // ]
 
-    const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
+
+    //2024/12/13
+
+    // const [names,setNames] = useState({
+    //     firstName: "John",
+    //     lastName: "Doe",
+    //
+    // });
+    //
+    // const [firstName,setFirstName] = useState('');
+    // const [lastName,setLastName] = useState('');
+    //
+    // function handleNameChange() {
+    //     setNames({
+    //         ...names,
+    //         firstName: firstName,
+    //         lastName: lastName,
+    //     })
+    // }
+
+    // const [customers, setCustomers] = useState<Customer[]>([])
+    //
+    // const [name, setName] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [phone, setPhone] = useState('')
+    // const [address, setAddress] = useState('')
+    //
+    // function addCustomers(){
+    //     const newCustomer = new Customer(name, email, phone, address);
+    //     setCustomers((customers) => [...customers, newCustomer]);
+    // }
+    // function deleteCustomers() {
+    //     setCustomers((customers) => customers.slice(0,-1));
+    // }
+    //
+    // function deleteByEmail() {
+    //     setCustomers((customers) => customers.filter((customer) => customer.email !== email));
+    // }
+    //
+    // function updateCustomers() {
+    //     setCustomers((customers) => customers.map((customer) => customer.email === email?{...customers,name:name,address:address,phone:phone,email:email}:customer));
+    // }
+
+    const routes = createBrowserRouter([
+        {
+            path: '',
+            element : <RootLayout/>,
+            children : [
+                { path : '', element : <Dashboard/>},
+                { path : '/add', element : <AddCustomer/>},
+                { path : '/delete', element : <DeleteCustomer/>},
+                { path : '/update', element : <UpdateCustomer/>}
+            ]
+        },
+    ])
+
+
 
     return (
         <>
@@ -108,13 +182,46 @@ function App() {
             {/*<button onClick={() => {setCount(count + 1)}}>Add</button>*/}
             {/*<button onClick={() => {setCount(count - 1)}}>Sub</button>*/}
 
-            <div className="App">
-                <h1>{count}</h1>
-                <ButtonComponent count={count} myClick={setCount}>Add</ButtonComponent>
-                <ButtonComponent count={count} myClick={setCount}>Subtract</ButtonComponent>
-            </div>
+            {/*<div className="App">*/}
+            {/*    <h1>{count}</h1>*/}
+            {/*    <ButtonComponent count={count} myClick={setCount}>Add</ButtonComponent>*/}
+            {/*    <ButtonComponent count={count} myClick={setCount}>Subtract</ButtonComponent>*/}
+            {/*</div>*/}
 
 
+            {/*2024/12/13*/}
+
+
+
+            {/*    <input name="firstName" type="text" placeholder="First Name" onChange={(e)=>setFirstName(e.target.value)}></input>*/}
+            {/*    <input name="lastName"  type="text" placeholder="Last Name" onChange={(e)=>setLastName(e.target.value)}></input>*/}
+
+            {/*    <button onClick={handleNameChange}>Display</button>*/}
+
+            {/*<br/>*/}
+            {/*{names.firstName + " " + names.lastName}*/}
+
+            {/*<input name='Name' type="text" placeholder='Name' onChange={(e) => setName(e.target.value)}/>*/}
+            {/*<input name='Address' type="text" placeholder='Address' onChange={(e) => setAddress(e.target.value)}/>*/}
+            {/*<input name='Email' type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>*/}
+            {/*<input name='Phone' type="text" placeholder='Phone' onChange={(e) => setPhone(e.target.value)}/>*/}
+            {/*<br/>*/}
+            {/*<button onClick={addCustomers}>Add</button>*/}
+            {/*<button onClick={deleteCustomers}>Delete</button>*/}
+            {/*<button onClick={deleteByEmail}>Delete by Email</button>*/}
+            {/*<button onClick={updateCustomers}>Update Customer</button>*/}
+
+            {/*{customers.map((customer) => (*/}
+            {/*    <div key={customer.email}>*/}
+            {/*        {customer.name} {customer.address} {customer.email} {customer.phone}*/}
+            {/*    </div>*/}
+            {/*))}*/}
+
+            <>
+                <CustomerProvider>
+                    <RouterProvider router={routes} />
+                </CustomerProvider>
+            </>
         </>
     )
 }
